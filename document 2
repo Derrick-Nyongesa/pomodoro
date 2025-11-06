@@ -1,0 +1,91 @@
+🧩 How the app works (step-by-step)
+
+1. Navbar
+
+Just the top bar with the app name — for design consistency.
+
+<Navbar />
+
+2. Timer (the heart of the app)
+
+This is the main part of the app where all the logic happens.
+
+When you first open it:
+
+You’ll see something like:
+
+Work Session
+25:00
+[Start] [Reset]
+
+Start begins the countdown.
+
+Pause (same button) stops the countdown temporarily.
+
+Reset resets it back to your chosen work time.
+
+When time runs out, it switches automatically to a “Break” phase.
+
+You can also click Settings to adjust:
+
+Work time (1–60 minutes)
+
+Break time (5–10 minutes)
+
+What you’ll do during your break (e.g., “Grab a snack”)
+
+All this is stored in localStorage, so your settings stay even after refreshing.
+
+3. Session Counter
+
+This part (on the right) shows how many work sessions you’ve finished.
+
+After every completed work session, this number goes up by 1.
+
+It’s also saved in localStorage so it stays between page reloads.
+
+4. The Flow
+
+Here’s what happens in real use:
+
+Phase What you see What happens
+Work Countdown (25:00 → 0:00) You focus and work
+Time hits 0 Switches to Break The app pauses — waiting for you to start your break
+Break Countdown (e.g., 5:00 → 0:00) You rest
+Time hits 0 Switches back to Work Repeat cycle 5. Behind the scenes
+
+The timer runs using setInterval() in React:
+
+Every 1 second, it subtracts 1 from remaining time.
+
+When remaining hits 0, it switches to the next phase.
+
+6. Styling
+
+Everything you see (dark background, glowing buttons, modal) is handled inside index.css.
+No frameworks (like Material UI or Bootstrap) — just plain CSS.
+
+⚙️ How to Run It
+
+If you haven’t run it yet, here’s what to do:
+
+npx create-react-app pomodoro
+cd pomodoro
+npm install react-router-dom
+
+Then replace:
+
+src/App.js
+
+src/pages/Home.js
+
+src/components/ folder (create it)
+
+src/index.css
+
+Finally, run:
+
+npm start
+
+And open http://localhost:3000
+— your Pomodoro timer will appear.
