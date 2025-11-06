@@ -1,7 +1,5 @@
 import { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
 import Timer from "../components/Timer";
-import SessionCounter from "../components/SessionCounter";
 
 function Home() {
   const [sessionsCompleted, setSessionsCompleted] = useState(
@@ -21,9 +19,6 @@ function Home() {
             sessionsCompleted={sessionsCompleted}
             setSessionsCompleted={setSessionsCompleted}
           />
-          {/* <aside className="sidebar">
-            <SessionCounter sessions={sessionsCompleted} />
-          </aside> */}
         </div>
       </main>
     </div>
