@@ -1,17 +1,16 @@
 /* ==========================
-Pomodoro App — global base
-All styles for the application go in this file.
+Pomodoro App — global base (Orangish Theme)
 ========================== */
 
 :root {
-  --bg: #0f1724; /* deep navy */
-  --card: #0b1220;
-  --muted: #9aa4b2;
-  --accent: #7dd3fc; /* soft cyan */
-  --accent-2: #60a5fa; /* secondary blue */
-  --glass: rgba(255, 255, 255, 0.04);
+  --bg: #1a0f07; /* warm dark background */
+  --card: #241005; /* deep brownish-black */
+  --muted: #d6ccc2; /* warm muted text */
+  --accent: #f97316; /* vivid orange */
+  --accent-2: #fb923c; /* lighter orange */
+  --glass: rgba(255, 255, 255, 0.05);
   --success: #86efac;
-  --danger: #fb7185;
+  --danger: #f87171;
   --rounded: 12px;
   --max-width: 980px;
 }
@@ -24,8 +23,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(180deg, #071022 0%, #08111a 100%);
-  color: #e6eef6;
+  background: linear-gradient(180deg, #2b1408 0%, #1a0f07 100%);
+  color: #fefcfb;
   min-height: 100vh;
 }
 
@@ -37,7 +36,7 @@ body {
 }
 .grid {
   display: grid;
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 1fr;
   gap: 20px;
   align-items: start;
 }
@@ -52,8 +51,9 @@ body {
 }
 .brand {
   font-weight: 700;
-  font-size: 20px;
+  /* font-size: 20px; */
   color: var(--accent);
+  text-align: center;
 }
 .navbar ul {
   list-style: none;
@@ -68,12 +68,12 @@ body {
 .timer-card {
   background: linear-gradient(
     180deg,
-    rgba(255, 255, 255, 0.02),
+    rgba(255, 255, 255, 0.03),
     rgba(255, 255, 255, 0.01)
   );
   padding: 24px;
   border-radius: var(--rounded);
-  box-shadow: 0 6px 18px rgba(2, 6, 23, 0.6);
+  box-shadow: 0 6px 18px rgba(32, 12, 0, 0.6);
 }
 .timer-header {
   display: flex;
@@ -85,6 +85,7 @@ body {
   text-align: center;
   margin: 18px 0;
   font-weight: 700;
+  color: var(--accent-2);
 }
 .meta {
   display: flex;
@@ -106,23 +107,135 @@ body {
 }
 .btn {
   background: var(--accent);
-  color: #042029;
+  color: #1a0f07;
   border: none;
   padding: 10px 16px;
   border-radius: 10px;
   cursor: pointer;
   font-weight: 600;
+  transition: all 0.15s ease;
 }
 .btn:hover {
+  background: var(--accent-2);
   transform: translateY(-1px);
 }
 .btn.ghost {
   background: transparent;
-  color: var(--muted);
-  border: 1px solid rgba(255, 255, 255, 0.04);
+  color: #f97316;
+  border: 1px solid #f97316;
 }
 .btn.outline {
   background: transparent;
   color: var(--accent);
-  border: 1px solid rgba(125, 211, 252, 0.12);
+  border: 1px solid rgba(249, 115, 22, 0.25);
+}
+
+.muted-text {
+  color: var(--muted);
+  font-size: 14px;
+  text-align: center;
+  margin-top: 50px;
+}
+
+/* ====== Modal (Settings Form) ====== */
+.modal-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 5, 0, 0.75);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal {
+  background: var(--card);
+  color: #fff;
+  border-radius: var(--rounded);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  width: 90%;
+  max-width: 420px;
+  padding: 0;
+  overflow: hidden;
+  animation: fadeInScale 0.3s ease;
+}
+
+@keyframes fadeInScale {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.modal-header {
+  background: var(--accent);
+  color: #1a0f07;
+  padding: 14px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.modal-header h3 {
+  margin: 0;
+  font-weight: 700;
+}
+.modal-body {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 20px;
+}
+
+.modal-body label {
+  display: flex;
+  flex-direction: column;
+  font-size: 14px;
+  color: var(--muted);
+  gap: 6px;
+}
+
+.modal-body input {
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.05);
+  color: #fff;
+  font-size: 15px;
+  transition: all 0.2s ease;
+}
+
+.modal-body input:focus {
+  outline: none;
+  border-color: var(--accent-2);
+  background: rgba(255, 255, 255, 0.08);
+}
+
+.form-error {
+  color: var(--danger);
+  background: rgba(255, 0, 0, 0.1);
+  padding: 8px 10px;
+  border-radius: 8px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+  padding: 12px 20px 20px;
+  border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ====== Scrollbar for long modals (if needed) ====== */
+.modal-body::-webkit-scrollbar {
+  width: 6px;
+}
+.modal-body::-webkit-scrollbar-thumb {
+  background: var(--accent);
+  border-radius: 10px;
 }

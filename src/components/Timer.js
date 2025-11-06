@@ -131,8 +131,32 @@ function Timer({ sessionsCompleted, setSessionsCompleted }) {
       </div>
 
       <div className="session-info">
-        <p>Work length: {settings.workMinutes} minute(s)</p>
-        <p>Break length: {settings.breakMinutes} minute(s)</p>
+        <p>
+          <span>
+            Work length:{" "}
+            <span style={{ color: "#f97316", fontWeight: "bold" }}>
+              {settings.workMinutes}
+            </span>{" "}
+            minute(s)
+          </span>
+          <span style={{ marginLeft: "50px" }}>
+            Break length:{" "}
+            <span style={{ color: "#f97316", fontWeight: "bold" }}>
+              {settings.breakMinutes}
+            </span>{" "}
+            minute(s)
+          </span>
+        </p>
+        <hr />
+        <p style={{ textAlign: "right" }}>
+          Total sessions completed:{" "}
+          <span style={{ color: "#f97316", fontWeight: "bold" }}>
+            {sessionsCompleted}
+          </span>
+        </p>
+        <p className="muted-text">
+          Good job! Keep up regular breaks to avoid burnout.
+        </p>
       </div>
 
       {showSettings && (

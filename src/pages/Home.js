@@ -13,18 +13,17 @@ function Home() {
   }, [sessionsCompleted]);
   return (
     <div className="app-root">
-      <Navbar />
       <main className="container">
-        <h1 className="sr-only">Pomodoro</h1>
+        <h1 className="brand">Pomodoro</h1>
         <div className="grid">
           {/* pass setter so Timer can increment */}
           <Timer
             sessionsCompleted={sessionsCompleted}
             setSessionsCompleted={setSessionsCompleted}
           />
-          <aside className="sidebar">
+          {/* <aside className="sidebar">
             <SessionCounter sessions={sessionsCompleted} />
-          </aside>
+          </aside> */}
         </div>
       </main>
     </div>
