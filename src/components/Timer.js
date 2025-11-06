@@ -154,9 +154,11 @@ function Timer({ sessionsCompleted, setSessionsCompleted }) {
             {sessionsCompleted}
           </span>
         </p>
-        <p className="muted-text">
-          Good job! Keep up regular breaks to avoid burnout.
-        </p>
+        {sessionsCompleted > 0 && (
+          <p className="muted-text">
+            Good job! Keep up regular breaks to avoid burnout.
+          </p>
+        )}
       </div>
 
       {showSettings && (
